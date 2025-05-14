@@ -2,7 +2,7 @@
 #include <conio.h>
 using namespace std;
 
-const int MAX_SIZE = 200; //Ukuran maks array
+const int MAX_SIZE = 50; //Ukuran maks array
 int array[MAX_SIZE]; //array dibuat menjadi global
 int n; //jumlah elemen array
 
