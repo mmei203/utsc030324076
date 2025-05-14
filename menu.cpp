@@ -2,6 +2,10 @@
 #include <conio.h>
 using namespace std;
 
+const int MAX_SIZE = 200; //Ukuran maks array
+int array[MAX_SIZE]; //array dibuat menjadi global
+int n; //jumlah elemen array
+
 
 void dMenu(){
 system("cls");
@@ -15,11 +19,55 @@ cout<<"Masukan angka :";
 
 }
 
-void mPertama(string pesan){
-system("cls");
-cout<<"hallo saya menu "<<pesan;
-getch();
+void inputData(){
+  system("cls");
+  cout << "Masukkan jumlah elemen array (MAKSIMAL 50) :";
+  cin >> n;
+  if (n > MAX_SIZE) {
+    cout << "Jumlah elemen melebihi batas maksimum!" << endl;
+    getch();
+    return;
+  }
+  cout << "Masukkan " << n << " angka:\n";
+  for (int i = 0; i < n; ++i) {
+    cout << "Elemen ke-" << i + 1 << ": ";
+    cin >> array[i];
+  }
 }
+
+void outputData() {
+  system("cls");
+  cout << "Array yang diinput: ";
+  for (int i = 0; i < n; ++i) {
+    cout << array[i];
+    if (i != n - 1) cout << ", "; 
+  }
+  getch();
+}
+
+void bubbleSort() {
+    system("cls");
+    // Melakukan bubble sort
+    for (int i = 0; i < n - 1; ++i) {
+      for (int j = 0; j < n - i - 1; ++j) {
+        if (array[j] > array[j + 1]) {
+          // Tukar array[j] dan array[j + 1]
+          int temp = array[j];
+          array[j] = array[j + 1];
+          array[j + 1] = temp;
+        }
+      }
+    }
+
+  // Menampilkan hasil setelah pengurutan
+  cout << "Array setelah diurutkan: ";
+    for (int i = 0; i < n; ++i) {
+      cout << array[i];
+      if (i != n - 1) cout << ", "; 
+    }
+  getch();
+}
+
 
 void sepatahKata(){
   system("cls");
@@ -36,23 +84,19 @@ do
   switch (pl)
   {
    case '1':
-    /* code */
-    mPertama("pertama");
+    inputData();
     break;
    case '2':
-    mPertama("ke- dua");
-    /* code */ 
+    showData();
     break;  
-   case '3':
-    mPertama("ke- tiga");
-    /* code */
-    break;  
-   case '4':
-    sepatahKata();
-    /* code */
-    break;  
-  case '5':
-    /* code */
+    case '3':
+     insertionSort();
+    break;
+    case '4':
+    SepatahKata();
+    break;
+    case '5':
+    cout<<"\nTerimakasih sudah mencoba"<<endl;
     break;
   
   default:
